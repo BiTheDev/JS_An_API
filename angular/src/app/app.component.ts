@@ -9,10 +9,7 @@ export class AppComponent {
   title = 'Angular';
   constructor(private _httpService: HttpService){
   }
-  GetAllTasks(){
-      return this._httpService.getTask();
-  }
-  getOneTask(){
-    return this._httpService.getOneTask();
+  GetPokemon(){
+    return this._httpService.getPokemon();
   }
 }

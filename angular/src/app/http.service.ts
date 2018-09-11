@@ -6,16 +6,11 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
 
   constructor(private _http: HttpClient) { 
-    this.getTask();
+    this.getPokemon();
   }
-  getTask(){
-    let allTask = this._http.get("/tasks");
-    allTask.subscribe(data => console.log("Got all Tasks",data))
-    
-  }
-  getOneTask(){
-    let oneTask = this._http.get("/tasks/5b95c0362ad14a14db0f5a9f");
-    oneTask.subscribe(data => console.log("Got one Tasks",data))
+  getPokemon(){
+    let bulbasaur = this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
+    bulbasaur.subscribe(data => console.log("Get one pokemon", data))
   }
 }
 
