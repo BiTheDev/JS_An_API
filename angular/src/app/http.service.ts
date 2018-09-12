@@ -12,5 +12,8 @@ export class HttpService {
     return this._http.get("/tasks");
     
   }
+  getInfo(id){
+    return this._http.get("/tasks/" + id);
+  }
 }
 

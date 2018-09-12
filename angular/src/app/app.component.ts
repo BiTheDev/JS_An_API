@@ -5,30 +5,37 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   Title = 'Angular';
   tasks =[];
-  title :String;
-  description : String = "";
-  completed : Boolean = false;
-  loggedIn: boolean;
+  detail = {};
+  unclick: boolean = true;
+  getdetail:boolean = false;
 
   constructor(private _httpService: HttpService){
-  }
-  ngOnInit(){
-    this.GetTasksFromService()
     this.tasks;
+    this.unclick;
+    this.getdetail;
   }
-  GetTasksFromService(){
+  ClickToGetAllTask(){
     let observable = this._httpService.getTask();
     observable.subscribe(data => {
       console.log("Got all Data",data);
       for(let x in data){
-        this.tasks.push(data[x].title + " - " + data[x].description) ;
+        this.tasks.push(data[x]) ;
       }
       console.log(this.tasks);
-      
+      this.unclick =! this.unclick;
     });
+  }
+  ClickTogetInfo(id){
+    let observable = this._httpService.getInfo(id);
+    this.getdetail = true;
+    observable.subscribe(data => {console.log("Get one data",data); 
+    this.detail = data;
+    console.log(this.detail);
+      }
+    )
   }
 
 }
