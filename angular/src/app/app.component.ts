@@ -7,9 +7,9 @@ import { HttpService } from './http.service';
 })
 export class AppComponent {
   Title = 'Angular';
-  tasks =[];
+  tasks ={};
   detail = {};
-  unclick: boolean = true;
+  unclick: boolean = false;
   getdetail:boolean = false;
 
   constructor(private _httpService: HttpService){
@@ -21,11 +21,10 @@ export class AppComponent {
     let observable = this._httpService.getTask();
     observable.subscribe(data => {
       console.log("Got all Data",data);
-      for(let x in data){
-        this.tasks.push(data[x]) ;
-      }
+      this.tasks = data;
       console.log(this.tasks);
       this.unclick =! this.unclick;
+      this.getdetail = false;
     });
   }
   ClickTogetInfo(id){
