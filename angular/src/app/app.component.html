@@ -13,11 +13,11 @@
     </div>
   </div>
   <div>
-    <div *ngIf="getdetail" id="detail">
+    <!-- <div *ngIf="getdetail" id="detail">
       <h2>Tasks Detail</h2>
       <h4>Title: {{detail[0].title}}</h4>
-      <p>Description: {{detail[0].description}}</p>
-      <button (click)="EditTask(detail[0]._id)">Edit</button>
+      <p>Description: {{detail[0].description}}</p> -->
+      <!-- <button (click)="EditTask(detail[0]._id)">Edit</button>
       <button (click)="RemoveTask(detail[0]._id)">Delete</button>
       <div *ngIf="edit">
         <form (submit)="UpdateTask(detail[0]._id)">
@@ -25,10 +25,10 @@
         <p>DESC : <input type="text" name="editTask.description" [(ngModel)]="editTask.description" value={{detail[0].description}} /></p>
         <button type="submit">Update</button>
         </form>
-      </div>
+      </div> -->
     
-    </div>
-    <div id="create">
+    <!-- </div> -->
+    <!-- <div id="create">
       <h2>Create New Task</h2>
       <form (submit)="CreateTask()">
         <p>{{ newTask | json }}</p>
@@ -36,6 +36,7 @@
         <p>DESC : <input type="text" name="newTask.description" [(ngModel)]="newTask.description" /></p>
         <button type="submit">Create New Task</button>
       </form>
-    </div>
+    </div> -->
   </div>
+  <app-task *ngIf='getdetail' [showTask] = detail></app-task>
 </div>

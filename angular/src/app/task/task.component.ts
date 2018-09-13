@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-task',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  @Input() showTask: any;
+  constructor(private _httpService: HttpService){
   }
 
+  ngOnInit() {
+
+  }
+  
 }
